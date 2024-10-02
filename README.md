@@ -19,6 +19,31 @@ Learn
   
 ![61eb7bcdcff42227_856](https://github.com/user-attachments/assets/ca31fedb-3736-41f1-adc3-b8f065ec94bb)
 
+- Unit test for ViewModel
+  - testImplementationを使うことで、テスト用のライブラリを追加できる(本番のapkには含まれない)
+    ```kotlin
+    testImplementation("junit:junit:4.13.2")
+  - Composeのテストのときは、Bomを使うことでライブラリのバージョンを統一できる
+    ```kotlin
+    androidTestImplementation(platform("androidx.compose:compose-bom:2023.06.01"))
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
+  - Test Strategy
+    - Success path
+      - ハッピーパステスト。意図された正常な動作を確認するテスト
+    - Error path
+      - 意図しないエラーが発生した場合のテスト。網羅が難しいので、単体テストを改善していくことが重要
+    - Boundary path
+      - アプリがロードされたときのUI状態など。状態の変化を確認するテスト
+  - 命名
+    - thingUnderTest_TriggerOfTest_ResultOfTest
+      - thingUnderTest = gameViewModel
+      - TriggerOfTest = CorrectWordGuessed
+      - ResultOfTest = ScoreUpdatedAndErrorFlagUnset
+  - Test Coverage
+    - Testを右クリックして、"Run Test with Coverage"を選択
+    - カバー率が表示され、クリックしてファイルを見るとどの部分がテストされていないかがわかる
+
+
 
 Pre-requisites
 --------------
